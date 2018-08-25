@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "928831581235",
+    "firebase_url": "https://pharmacist-b7dcb.firebaseio.com",
+    "project_id": "pharmacist-b7dcb",
+    "storage_bucket": "pharmacist-b7dcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928831581235:android:57faa86791834a90",
+        "android_client_info": {
+          "package_name": "com.example.pharmacist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928831581235-0rntfsei10khrped7e3na712ll5jibp9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pharmacist",
+            "certificate_hash": "600109bc6efb10ccd3b03061e4f4c1886cfd15e7"
+          }
+        },
+        {
+          "client_id": "928831581235-rihbhglbqb2eog0i9pur856pd3g65pmg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjm2NmVf4cCnTaO6Og_lLCdBVzQwvemEQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928831581235-rihbhglbqb2eog0i9pur856pd3g65pmg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

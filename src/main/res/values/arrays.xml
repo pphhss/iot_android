@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_drug">
+        <item>1번약</item>
+        <item>2번약</item>
+        <item>3번약</item>
+        <item>없음</item>
+    </string-array>
+</resources>

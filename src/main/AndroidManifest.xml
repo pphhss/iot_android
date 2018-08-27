@@ -31,8 +31,15 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ConsentTypeZeroActivity">
             <intent-filter>
-                <action android:name=".ConsentTypeZeroActivity"></action>
-                <category android:name="android.intent.category.DEFAULT"></category>
+                <action android:name=".ConsentTypeZeroActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ConsentTypeOneActivity">
+            <intent-filter>
+                <action android:name=".ConsentTypeOneActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

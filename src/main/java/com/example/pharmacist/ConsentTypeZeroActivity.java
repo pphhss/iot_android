@@ -1,36 +1,51 @@
 package com.example.pharmacist;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ConsentTypeZeroActivity extends AppCompatActivity {
 
-    String name;
-    String temperature;
-    String heartrate;
-    String symptominfo;
-    String curdisease;
+    private final static String URL = "http://192.168.219.165:3000/users/reactType0";
+    private String name;
+    private String temperature;
+    private String heartrate;
+    private String symptominfo;
+    private String curdisease;
+    private String sid;
 
-    TextView tv_name;
-    TextView tv_temperature;
-    TextView tv_heartrate;
-    TextView tv_symptominfo;
-    TextView tv_curdisease;
+    private TextView tv_name;
+    private TextView tv_temperature;
+    private TextView tv_heartrate;
+    private TextView tv_symptominfo;
+    private TextView tv_curdisease;
 
-    RadioGroup rg_list;
+    private RadioGroup rg_list;
 
-    Button btn_prescription;
+    private Button btn_prescription;
+
+    private Context me = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +56,25 @@ public class ConsentTypeZeroActivity extends AppCompatActivity {
         settings(mi);
 
 
+        btn_prescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RadioButton rb = (RadioButton)rg_list.findViewById(rg_list.getCheckedRadioButtonId());
+                String select = rb.getText().toString();
+
+                sendResult(select,sid);
+
+                finish();
 
 
-
-
-
+                };
+            });
     }
+
+
+
+
+
 
     private Bitmap getBitmapFromURL(String src) {
         try {
@@ -70,6 +98,7 @@ public class ConsentTypeZeroActivity extends AppCompatActivity {
         heartrate = mi.getStringExtra("heartrate");
         symptominfo = mi.getStringExtra("symptominfo");
         curdisease = mi.getStringExtra("curdisease");
+        sid = mi.getStringExtra("sid");
 
         tv_name = (TextView)findViewById(R.id.type0_name);
         tv_curdisease = (TextView)findViewById(R.id.type0_curdisease);
@@ -96,5 +125,28 @@ public class ConsentTypeZeroActivity extends AppCompatActivity {
         }
     }
 
+    private void sendResult(final String result,final String sid) {
+        StringRequest sr = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
+            }
+        }, null){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String,String>();
+
+                params.put("result",result);
+                params.put("sid",sid);
+                return params;
+            }
+
+
+         };
+          RequestQueue queue = Volley.newRequestQueue(me);
+          queue.add(sr);
+
+
+
+    }
 }

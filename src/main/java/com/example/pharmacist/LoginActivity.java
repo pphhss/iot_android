@@ -2,6 +2,7 @@ package com.example.pharmacist;
 
 import android.app.Notification;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -24,7 +26,7 @@ import java.util.concurrent.Executor;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Object object = this;
+    Context object = this;
     EditText ed_userID;
     EditText ed_userPW;
     Button btn_login;
@@ -56,7 +58,14 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         Log.d("phs",response);
-                        
+
+                        if(response.equals("TRUE")){
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            Toast.makeText(object,"아이디 비밀번호 불일치",Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 };
